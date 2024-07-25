@@ -1,0 +1,577 @@
+
+
+@use 'variables';
+
+@mixin d_flex($j_content: space-between, $a_item: center){
+    display: flex;
+    justify-content: $j_content;
+    align-items: $a_item;
+    flex-wrap: wrap;
+}
+@mixin black_btn($padding: 12px 24px){
+    border: 0;
+    background: none;
+    a{
+        text-decoration: none;
+        padding: $padding;
+        display: block;
+        background-color: variables.$black;
+        color: variables.$white;
+        font-size: 16px;
+        font-weight: 400;
+        transition: all 0.4s ease;
+        border-radius: 5px;
+        line-height: 150%;
+        &:hover{
+            background-color: variables.$green;
+            color: variables.$black;
+        }
+    }
+}
+
+@mixin trans_btn($padding: 12px 24px, $trans_color: variables.$black){
+    border: 0;
+    background: none;
+    a{
+        text-decoration: none;
+        padding: $padding;
+        display: block;
+        background-color: transparent;
+        color: $trans_color;
+        font-size: 16px;
+        border: 1px solid $trans_color;
+        font-weight: 400;
+        transition: all 0.4s ease;
+        border-radius: 5px;
+        line-height: 150%;
+        &:hover{
+            background-color: variables.$black;
+            color: variables.$white;
+        }
+    }
+}
+@mixin section_heading($f_size: 48px, $color: variables.$black){
+    color: $color;
+    font-size: $f_size;
+    font-weight: 700;
+    line-height: 120%;
+}
+@mixin paragraph($f_size: 18px){
+    color: variables.$black;
+    font-size: $f_size;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+
+
+
+
+
+*{
+    margin: 0;
+    font-family: "Roboto";
+}
+section{
+    padding: 0px 20px;
+    .container{
+        width: 1520px;
+        margin: 0px auto;
+        @include d_flex();
+    }
+}
+header .header_section{
+    box-sizing: border-box;
+    width: 100%;
+    .container{
+        padding: 15px 0px;
+        .logo{
+            width: 10%;
+        }
+        .menu_holder{
+            width: 50%;
+            @include d_flex($j_content: flex-end);
+            gap: 30px;
+            .menu{
+                width: 75%;
+                nav ul{
+                    list-style: none;
+                    @include d_flex();
+                    li{
+                        margin: 0px 5px;
+                        a{
+                            text-decoration: none;
+                            color: variables.$black;
+                            font-size: 16px;
+                            font-weight: 400;
+                            border-bottom: 2px solid transparent;
+                            transition: all 0.4s ease;
+                            &:hover{
+                                border-bottom: 2px solid variables.$green;
+                            }
+                        }
+                    }
+                }
+            }
+            .cta_btn{
+                width: 20%;
+                button{
+                    @include black_btn($padding: 10px 20px)
+                }
+            }
+        }
+
+    }
+}
+.hero_section{
+    padding: 0;
+    background-color: variables.$off_white;
+    min-height: 80vh;
+    .container{
+        width: 100%;
+        .hero_heading{
+            width: 40%;
+            padding: 80px;
+            box-sizing: border-box;
+            h1{
+                font-size: 56px;
+                font-weight: 700;
+                line-height: 120%;
+                color: variables.$black;
+                max-width: 580px;
+            }
+            p{
+                @include paragraph();
+                width: 580px;
+                margin: 20px 0px;
+            }
+            .btn_holder{
+                @include d_flex($j_content: flex-start);
+                gap: 20px;
+                button{
+                    @include black_btn();
+                    &:nth-child(2){
+                        @include trans_btn();
+                    }
+                }
+            }
+        }
+        .hero_image{
+            width: 50%;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+}
+// com_logo
+.company_logos{
+    padding: 0px 20px;
+    background-color: variables.$off_white;
+    .container{
+        padding: 80px 20px;
+        flex-direction: column;
+        h3{
+        font-size: 18px;
+        font-weight: 700;
+        color: variables.$black;
+        line-height: 150%;
+        margin-bottom: 48px;
+        }
+        .com_logos{
+            @include d_flex();
+            width: 100%;
+        }
+    }
+}
+  
+
+// donate_now_section
+.container{
+    padding: 110px 0px;
+    gap: 80px;
+    .dn_image{
+        width: 40%;
+        img{
+            width: 100%;
+        }
+    }
+    .dn_headings{
+        width: 40%;
+        h2{
+            @include section_heading();
+        }
+        p{
+            @include paragraph();
+            margin: 30px 0px;
+        }
+        .btn_holder{
+            @include d_flex($j_content: flex-start);
+            gap: 20px;
+            button{
+                &:nth-child(1){
+                    @include black_btn();
+                }
+                &:nth-child(2){
+                    @include trans_btn()
+                }
+            }
+        }
+    }
+}
+
+// ACHIVEMENT_SECTION
+.achivements_section{
+    .container{
+        flex-direction: column;
+        gap: 40px;
+        justify-content: center;
+        padding: 110px 0px;
+        .ach_headings{
+            h2{
+                @include section_heading();
+                text-align: center;
+            }
+            p{
+                @include paragraph();
+                max-width: 1300px;
+                margin-top: 30px;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+        }
+        .ach_counters{
+            @include d_flex();
+            gap: 30px;
+            box-sizing: border-box;
+            width: 100%;
+            .counter{
+                width: 20%;
+                box-sizing: border-box;
+                @include d_flex($j_content: center);
+                flex-direction: column;
+                h3{
+                    @include section_heading($f_size: 40px);
+                    margin-bottom: 10px;
+                }
+                p{
+                    @include paragraph($f_size: 16px)
+                }
+            }
+        }
+    }
+}
+// our_mission_section  start now
+
+.our_mission_section{
+
+    .container{
+        padding: 110px 0px;
+        .our_mission_headings{
+            width: 45%;
+            h4{
+                font-size: 16px;
+                font-weight: 700;
+                color: variables.$black;
+            }
+            h2{
+                @include section_heading();
+                margin: 20px 0px;
+            }
+            p{
+                @include paragraph();
+                margin-bottom: 30px;
+            }
+            a{
+                text-decoration: none;
+                color: variables.$black;
+                font-size: 16px;
+                font-weight: 400;
+                transition: all 0.4s ease;
+                span{
+                    margin-left: 10px;
+                    font-size: 20px;
+                }
+                &:hover{
+                    color: variables.$green;
+                }
+            }
+        }
+        .our_mission_video{
+            width: 40%;
+        }
+    }
+}
+
+// cards_sections
+.cards_section{
+    .container{
+        padding: 110px 0px;
+        flex-direction: column;
+    }
+    .cards_headings{
+        margin-bottom: 50px;
+        h2{
+            @include section_heading($f_size: 56px);
+            max-width: 768px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        p{
+            @include paragraph();
+            text-align: center;
+        }
+    }
+    .cards_holder{
+        .cards{
+            @include d_flex();
+            gap: 40px;
+            .card{
+                width: 22%;
+                box-sizing: border-box;
+                padding: 30px 20px;
+                border: 1px solid rgba(0,0,0,0.5);
+                border-radius: 5px;
+                text-align: center;
+                min-height: 350px;
+                @include d_flex();
+                flex-direction: column;
+                h4{
+                    font-size: 20px;
+                    font-weight: 600;
+                    color: variables.$black;
+                }
+                p{
+                    @include paragraph($f_size:16px);
+                    max-width: 250px;
+                }
+                button{
+                    @include trans_btn($padding:8px 20px);
+                    a span{
+                        margin-left: 10px;
+                        font-size: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+// blog_section
+.blog_section{
+    .container{
+        padding: 110px 0px;
+        flex-direction: column;
+        .blog_headings{
+            text-align: center;
+            h4{
+                font-size: 20px;
+                font-weight: 600;
+            }
+            h2{
+                @include section_heading($f_size:56px);
+                margin: 30px 0px;
+            }
+            p{
+                @include paragraph();
+            }
+        }
+        .blog_cards{
+            margin-top: 50px;
+            .cards{
+                @include d_flex();
+                gap: 30px;
+                .card{
+                    width: 30%;
+                    img{
+                        width: 100%;
+                        height: 300px;
+                        object-fit: cover;
+                        border-radius: 5px;
+                    }
+                    h4{
+                        font-size: 14px;
+                        font-weight: 600;
+                        margin-top: 25px; 
+                    }
+                    h3{
+                        @include section_heading($f_size:24px);
+                        margin: 10px 0px;
+                    }
+                    p{
+                        @include paragraph($f_size:16px);
+                    }
+                }
+            }
+        }
+    }
+}
+
+//testimonial_section start now
+.testimonial_section{
+    .container{
+        padding: 110px 0px;
+        flex-direction: column;
+        align-items: flex-start;
+        .t_headings{
+            margin-bottom: 50px;
+            width: 40%;
+            h2{
+                @include section_heading();
+                margin-bottom: 10px;
+            }
+            p{
+                @include paragraph();
+            }
+        }
+        .t_blocks{
+            .blocks{
+                @include d_flex();
+                gap: 40px;
+                .single_block{
+                    width: 40%;
+                    p{
+                        font-size: 20px;
+                        font-weight: 700;
+                        color: #676767;
+                        margin: 30px 0px;
+                        &::before , &::after{
+                            content: '"';
+                        }
+                    }
+                    .t_user_info{
+                        margin-top: 10px;
+                        @include d_flex($j_content:flex-start);
+                        gap: 20px;
+                        img{
+                            width: 60px;
+                            height: 60px;
+                            border-radius: 100px;
+                            object-fit: cover;
+                        }
+                        h4{
+                            font-size: 16px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// cat_section_start now
+.cta_section{
+    background-image: url("../img/cta.image.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .container{
+        padding: 110px 0px;
+        width: 768px;
+        > div{
+            @include d_flex();
+            flex-direction: column;
+            text-align: center;
+            h2{
+                @include section_heading($color: variables.$white);
+            }
+            p{
+                @include paragraph();
+                color: variables.$white;
+                margin-top: 30px;
+                margin-bottom: 40px;
+            }
+            .btn_holder{
+                @include d_flex($j_content:center);
+                gap: 30px;
+                > a{
+                    display: block;
+                    text-decoration: none;
+                    color: variables.$white;
+                    font-size: 16px;
+                    font-weight: 400;
+                    transition: all 0.4s ease;
+                    span{
+                        margin-left: 10px;
+                        font-size: 20px;
+                    }
+                    &:hover{
+                        color: variables.$green;
+                    }
+                 }
+
+                 button{
+                    @include trans_btn($trans_color: variables.$white);
+                    a{
+                        &:hover{
+                            background-color: variables.$white;
+                            color: variables.$black;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+// foter_section_now
+.footer_section{
+    .container{
+        padding: 110px 0px;
+        flex-direction: column;
+        .footer_top_area{
+            margin-bottom: 60px;
+            align-items: center;
+            img{
+                margin-bottom: 30px;
+                // text-align: center;
+            }
+            nav ul{
+                @include d_flex();
+                gap: 10px;
+                padding: 0;
+                list-style: none;
+                li{
+                    margin: 5px;
+                    a{
+                        text-decoration: none;
+                        color: variables.$black;
+                        font-weight: 600;
+                        font-size: 16px;
+                        padding: 5px;
+                        transition: all 0.4s ease;
+                        border-bottom: 2px solid transparent;
+                        &:hover{
+                            border-color: variables.$black;
+                        }
+                    }
+                }
+            }
+        }
+        .footer_bottom_area{
+            width: 100%;
+            padding-top: 30px;
+            border-top: 1px solid variables.$black;
+            @include d_flex();
+            div{
+                &:nth-child(1){
+                    p{
+                        @include paragraph($f_size:14px);
+                    }
+                }
+                &:nth-child(2){
+                    a{
+                        margin: 20px;
+                        color: variables.$black;
+                        font-size: 14px;
+                        font-weight: 400;
+                        transition: all 0.4s ease;
+                        &:hover{
+                            color: variables.$green;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
